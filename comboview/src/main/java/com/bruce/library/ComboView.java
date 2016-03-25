@@ -156,7 +156,7 @@ public class ComboView extends RelativeLayout {
 //        setPadding(padding, padding, padding, padding);
         if (progressAnimator == null) {
             progressAnimator = ObjectAnimator.ofFloat(this, "currentProgress", 0, 360);
-            progressAnimator.setDuration(2000);
+            progressAnimator.setDuration(1000);
             progressAnimator.setInterpolator(new AccelerateDecelerateInterpolator());
         }
         progressAnimator.addListener(new AnimatorListenerAdapter() {

@@ -24,7 +24,7 @@ public class MainActivity extends AppCompatActivity {
 
                 .strokeWidth(dimen(R.dimen.cb_dimen_1), dimen(R.dimen.cb_dimen_1))
                 .strokeColor(color(R.color.cb_color_blue), color(R.color.cb_color_blue))
-                .duration(400)
+                .duration(300)
                 .padding(dimen(R.dimen.cb_dimen_3))
                 .text("赠送", "连击")
                 .textSize(16)
