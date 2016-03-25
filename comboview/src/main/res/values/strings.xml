@@ -1,0 +1,14 @@
+<resources>
+    <string name="app_name">Combo view</string>
+
+    <color name="cb_color_white">#ffffff</color>
+    <color name="cb_color_blue">#ff0099cc</color>
+    <color name="cb_color_blue_dark">#ff00719b</color>
+
+    <dimen name="cb_dimen_70">70dp</dimen>
+    <dimen name="cb_dimen_38">38dp</dimen>
+    <dimen name="cb_dimen_52">52dp</dimen>
+    <dimen name="cb_dimen_25">25dp</dimen>
+    <dimen name="cb_dimen_1">1dp</dimen>
+    <dimen name="cb_dimen_3">3dp</dimen>
+</resources>
