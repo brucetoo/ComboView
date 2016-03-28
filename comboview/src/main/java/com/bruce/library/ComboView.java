@@ -115,11 +115,10 @@ public class ComboView extends RelativeLayout {
                         isDrawProgress = true;
                         strokePaint.setColor(toStrokeColor);
                         strokePaint.setStrokeWidth(toStrokeWidth);
-                        //执行绘制动画
                         drawProgress();
                     }
                 });
-            } else {//绘制progress的过程中,点击就重绘
+            } else {//redraw progress when still draw circle
                 comboClickListener.onComboClick();
                 startRipple();
                 setCurrentProgress(-90);
@@ -206,7 +205,7 @@ public class ComboView extends RelativeLayout {
         this.fromStrokeColor = params.fromStrokeColor;
         this.toStrokeColor = params.toStrokeColor;
         this.comboClickListener = params.comboClickListener;
-        morphToSquare(0);//初始化的时候duration=0
+        morphToSquare(0);//init duration=0  no animation
         morphingButton.setTextSize(textSize);
         morphingButton.setTextColor(textColor);
     }

@@ -78,8 +78,30 @@ marin*** something to locate where actually ComboView need be placed-->
 
 ```
 
-### TODO 
-  Upload to jcenter
+### Dependency
+
+```groovy
+ //wait bintray to response
+ compile 'com.brucetoo.comboview:comboview:1.0.0'
+
+```
+
+OR
+
+```groovy
+
+repositories {
+    maven {
+        url "https://jitpack.io"
+    }
+}
+
+
+dependencies {
+    compile 'com.github.brucetoo:ComboView:{latest-commit-tag}'
+}
+
+```
   
 
 ### Thanks [dmytrodanylyk](https://github.com/dmytrodanylyk) and his [android-morphing-button](https://github.com/dmytrodanylyk/android-morphing-button)
