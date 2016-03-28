@@ -31,11 +31,50 @@
                 .padding(dimen(R.dimen.cb_dimen_3))//padding between outer stroke and inner button
                 .text("赠送", "连击")
                 .textSize(16)
-                .textColor(color(R.color.cb_color_white));
+                .textColor(color(R.color.cb_color_white))
+                .comboClickListener(new ComboView.ComboClickListener() {
+                                    @Override
+                                    public void onComboClick() {
+                                        Log.e("MainActivity","onComboClick");
+                                    }
+
+                                    @Override
+                                    public void onNormalClick() {
+                                        Log.e("MainActivity","onNormalClick");
+                                    }
+                                });
 
         comboView.settingMorphParams(params);
 
 ```
+
+## Integrate With Special UI
+
+```xml
+
+<!--layout_combo_view must overlay other UI,and just adjust ComboView's layout_width,layout_height,
+marin*** something to locate where actually ComboView need be placed-->
+
+<RelativeLayout
+        android:id="@+id/layout_combo_view"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@android:color/transparent">
+
+        <com.bruce.library.ComboView
+            android:layout_width="220dp"
+            android:layout_height="220dp"
+            android:id="@+id/combo_view"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentBottom="true"
+            android:layout_marginRight="-65dp"
+            android:layout_marginBottom="-80dp"
+            />
+
+    </RelativeLayout>
+
+```xml
+
 
 ### Thanks [dmytrodanylyk](https://github.com/dmytrodanylyk) and his [android-morphing-button](https://github.com/dmytrodanylyk/android-morphing-button)
 
