@@ -15,36 +15,39 @@
 
 #How To Use
 ```java
+
   ComboView.Params params = ComboView.Params.create()
-                .color(color(R.color.cb_color_blue), color(R.color.cb_color_blue))
-                .colorPressed(color(R.color.cb_color_blue_dark), color(R.color.cb_color_blue_dark))
-
-                //Following three to***** values must be the same can morph to circle
-                .cornerRadius(dimen(R.dimen.cb_dimen_25), dimen(R.dimen.cb_dimen_52))
-                .width(dimen(R.dimen.cb_dimen_70), dimen(R.dimen.cb_dimen_52))
-                .height(dimen(R.dimen.cb_dimen_38), dimen(R.dimen.cb_dimen_52))
-
-                //Can change from*** values and to*** values to see effect
-                .strokeWidth(dimen(R.dimen.cb_dimen_1), dimen(R.dimen.cb_dimen_1))
-                .strokeColor(color(R.color.cb_color_blue), color(R.color.cb_color_blue))
-                .duration(400)
-                .padding(dimen(R.dimen.cb_dimen_3))//padding between outer stroke and inner button
-                .text("赠送", "连击")
-                .textSize(16)
-                .textColor(color(R.color.cb_color_white))
-                .comboClickListener(new ComboView.ComboClickListener() {
-                                    @Override
-                                    public void onComboClick() {
-                                        Log.e("MainActivity","onComboClick");
-                                    }
-
-                                    @Override
-                                    public void onNormalClick() {
-                                        Log.e("MainActivity","onNormalClick");
-                                    }
-                                });
-
-        comboView.settingMorphParams(params);
+ 
+                 //Must
+                 .cornerRadius(dimen(R.dimen.cb_dimen_25), dimen(R.dimen.cb_dimen_52))// Following three to***** values must be the same can morph to circle
+                 .width(dimen(R.dimen.cb_dimen_70), dimen(R.dimen.cb_dimen_52))
+                 .height(dimen(R.dimen.cb_dimen_38), dimen(R.dimen.cb_dimen_52))
+                 .morphDuration(300)
+                 .text("赠送", "连击")
+ 
+                 //Option -- and values below is default
+                 .color(color(R.color.cb_color_blue), color(R.color.cb_color_blue))
+                 .colorPressed(color(R.color.cb_color_blue_dark), color(R.color.cb_color_blue_dark))
+                 .strokeWidth(dimen(R.dimen.cb_dimen_1), dimen(R.dimen.cb_dimen_1))
+                 .strokeColor(color(R.color.cb_color_blue), color(R.color.cb_color_blue))
+                 .circleDuration(5000)
+                 .rippleDuration(300)
+                 .padding(dimen(R.dimen.cb_dimen_3))
+                 .textSize(16)
+                 .textColor(color(R.color.cb_color_white))
+                 .comboClickListener(new ComboView.ComboClickListener() {
+                     @Override
+                     public void onComboClick() {
+                         Log.e("MainActivity","onComboClick");
+                     }
+ 
+                     @Override
+                     public void onNormalClick() {
+                         Log.e("MainActivity","onNormalClick");
+                     }
+                 });
+ 
+         comboView.settingMorphParams(params);
 
 ```
 
@@ -75,6 +78,9 @@ marin*** something to locate where actually ComboView need be placed-->
 
 ```
 
+### TODO 
+  Upload to jcenter
+  
 
 ### Thanks [dmytrodanylyk](https://github.com/dmytrodanylyk) and his [android-morphing-button](https://github.com/dmytrodanylyk/android-morphing-button)
 
