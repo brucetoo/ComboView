@@ -7,6 +7,7 @@ import android.animation.ObjectAnimator;
 import android.annotation.TargetApi;
 import android.content.Context;
 import android.graphics.Canvas;
+import android.graphics.Color;
 import android.graphics.Paint;
 import android.graphics.RectF;
 import android.os.Build;
@@ -38,14 +39,16 @@ public class ComboView extends RelativeLayout {
     private int toWidth;
     private int fromHeight;
     private int toHeight;
-    private int fromColor;
-    private int toColor;
-    private int fromColorPressed;
-    private int toColorPressed;
-    private int duration;
-    private int padding;
-    private int textSize;
-    private int textColor;
+    private int fromColor = Color.parseColor("#ff0099cc");
+    private int toColor = Color.parseColor("#ff00719b");
+    private int fromColorPressed = Color.parseColor("#ff0099cc");
+    private int toColorPressed = Color.parseColor("#ff00719b");
+    private int morphDuration = 300;
+    private int circleDuration = 5000;
+    private int rippleDuration = 300;
+    private int padding = 1;
+    private int textSize = 16;
+    private int textColor = Color.parseColor("#ffffff");
     private int fromStrokeWidth = 1;
     private int toStrokeWidth = 1;
     private int fromStrokeColor = fromColor;
@@ -106,7 +109,7 @@ public class ComboView extends RelativeLayout {
         public void onLimitClick(View v) {
             if (!isDrawProgress) {
                 comboClickListener.onNormalClick();
-                morphToCircle(duration, new MorphingAnimation.Listener() {
+                morphToCircle(morphDuration, new MorphingAnimation.Listener() {
                     @Override
                     public void onAnimationEnd() {
                         isDrawProgress = true;
@@ -160,7 +163,7 @@ public class ComboView extends RelativeLayout {
 //        setPadding(padding, padding, padding, padding);
         if (progressAnimator == null) {
             progressAnimator = ObjectAnimator.ofFloat(this, "currentProgress", 0, 360);
-            progressAnimator.setDuration(5000);
+            progressAnimator.setDuration(circleDuration);
             progressAnimator.setInterpolator(new AccelerateDecelerateInterpolator());
         }
         progressAnimator.addListener(new AnimatorListenerAdapter() {
@@ -169,7 +172,7 @@ public class ComboView extends RelativeLayout {
                 isDrawProgress = false;
                 strokePaint.setColor(getResources().getColor(android.R.color.transparent));
                 setCurrentProgress(0);
-                morphToSquare(duration);
+                morphToSquare(morphDuration);
             }
         });
 
@@ -192,7 +195,9 @@ public class ComboView extends RelativeLayout {
         this.toColor = params.toColor;
         this.fromColorPressed = params.fromColorPressed;
         this.toColorPressed = params.toColorPressed;
-        this.duration = params.duration;
+        this.morphDuration = params.morphDuration;
+        this.circleDuration = params.circleDuration;
+        this.rippleDuration = params.rippleDuration;
         this.padding = params.padding;
         this.textColor = params.textColor;
         this.textSize = params.textSize;
@@ -206,9 +211,9 @@ public class ComboView extends RelativeLayout {
         morphingButton.setTextColor(textColor);
     }
 
-    private void morphToSquare(int duration) {
+    private void morphToSquare(int morphDuration) {
         MorphingButton.Params square = MorphingButton.Params.create()
-                .duration(duration)
+                .duration(morphDuration)
                 .cornerRadius(fromCornerRadius)
                 .width(fromWidth)
                 .height(fromHeight)
@@ -218,9 +223,9 @@ public class ComboView extends RelativeLayout {
         morphingButton.morph(square);
     }
 
-    private void morphToCircle(int duration, MorphingAnimation.Listener listener) {
+    private void morphToCircle(int morphDuration, MorphingAnimation.Listener listener) {
         MorphingButton.Params circle = MorphingButton.Params.create()
-                .duration(duration)
+                .duration(morphDuration)
                 .cornerRadius(toCornerRadius)
                 .width(toWidth)
                 .height(toHeight)
@@ -248,7 +253,7 @@ public class ComboView extends RelativeLayout {
             ObjectAnimator scaleYAnimator = ObjectAnimator.ofFloat(rippleView, "scaleY", 1.0f, 4.0f);
             ObjectAnimator alphaAnimator = ObjectAnimator.ofFloat(rippleView, "alpha", 1, 0);
 
-            animatorSet.setDuration(300);
+            animatorSet.setDuration(rippleDuration);
             animatorSet.setInterpolator(new AccelerateDecelerateInterpolator());
 
             animatorSet.playTogether(scaleXAnimator, scaleYAnimator, alphaAnimator);
@@ -296,7 +301,9 @@ public class ComboView extends RelativeLayout {
         private int toColor;
         private int fromColorPressed;
         private int toColorPressed;
-        private int duration;
+        private int morphDuration;
+        private int circleDuration;
+        private int rippleDuration;
         private int padding;
         private int textSize;
         private int textColor;
@@ -371,8 +378,18 @@ public class ComboView extends RelativeLayout {
             return this;
         }
 
-        public Params duration(int duration) {
-            this.duration = duration;
+        public Params morphDuration(int morphDuration) {
+            this.morphDuration = morphDuration;
+            return this;
+        }
+
+        public Params circleDuration(int circleDuration){
+            this.circleDuration = circleDuration;
+            return this;
+        }
+
+        public Params rippleDuration(int rippleDuration){
+            this.rippleDuration = rippleDuration;
             return this;
         }
 
