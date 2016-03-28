@@ -88,7 +88,8 @@ public class MorphingButton extends Button {
         mAnimationInProgress = true;
 //        setText(null);
         setCompoundDrawablesWithIntrinsicBounds(0, 0, 0, 0);
-        setPadding(mPadding.left, mPadding.top, mPadding.right, mPadding.bottom);
+//        setPadding(mPadding.left, mPadding.top, mPadding.right, mPadding.bottom);
+        setPadding(0, 0, 0, 0);
 
         MorphingAnimation.Params animationParams = MorphingAnimation.Params.create(this)
                 .color(mColor, params.color)

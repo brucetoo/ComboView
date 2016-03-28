@@ -90,7 +90,8 @@ public class ComboView extends RelativeLayout {
         LayoutParams params = new LayoutParams(LayoutParams.WRAP_CONTENT, LayoutParams.WRAP_CONTENT);
 //        params.addRule(ALIGN_PARENT_BOTTOM,TRUE);
 //        params.addRule(ALIGN_PARENT_RIGHT,TRUE);
-        params.addRule(CENTER_IN_PARENT);
+        morphingButton.setPadding(0,0,0,0);
+        params.addRule(CENTER_IN_PARENT,TRUE);
         addView(morphingButton, params);
 
         morphingButton.setOnClickListener(btnClick);
