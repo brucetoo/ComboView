@@ -81,7 +81,7 @@ marin*** something to locate where actually ComboView need be placed-->
 ### Dependency
 
 ```groovy
- //wait bintray to response
+
  compile 'com.brucetoo.comboview:comboview:1.0.0'
 
 ```
