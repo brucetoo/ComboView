@@ -100,9 +100,9 @@ public class ComboView extends RelativeLayout {
 
     private boolean isDrawProgress;
 
-    private OnClickListener btnClick = new OnClickListener() {
+    private OnClickListener btnClick = new LimitClickListener() {
         @Override
-        public void onClick(View v) {
+        public void onLimitClick(View v) {
             if (!isDrawProgress) {
                 comboClickListener.onNormalClick();
                 morphToCircle(duration, new MorphingAnimation.Listener() {
