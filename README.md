@@ -73,7 +73,7 @@ marin*** something to locate where actually ComboView need be placed-->
 
     </RelativeLayout>
 
-```xml
+```
 
 
 ### Thanks [dmytrodanylyk](https://github.com/dmytrodanylyk) and his [android-morphing-button](https://github.com/dmytrodanylyk/android-morphing-button)
