@@ -4,6 +4,7 @@ import android.support.annotation.ColorRes;
 import android.support.annotation.DimenRes;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -28,7 +29,18 @@ public class MainActivity extends AppCompatActivity {
                 .padding(dimen(R.dimen.cb_dimen_3))
                 .text("赠送", "连击")
                 .textSize(16)
-                .textColor(color(R.color.cb_color_white));
+                .textColor(color(R.color.cb_color_white))
+                .comboClickListener(new ComboView.ComboClickListener() {
+                    @Override
+                    public void onComboClick() {
+                        Log.e("MainActivity","onComboClick");
+                    }
+
+                    @Override
+                    public void onNormalClick() {
+                        Log.e("MainActivity","onNormalClick");
+                    }
+                });
 
         comboView.settingMorphParams(params);
     }

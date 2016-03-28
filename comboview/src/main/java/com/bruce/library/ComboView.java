@@ -50,6 +50,7 @@ public class ComboView extends RelativeLayout {
     private int toStrokeWidth = 1;
     private int fromStrokeColor = fromColor;
     private int toStrokeColor = toColor;
+    private ComboClickListener comboClickListener;
 
     public ComboView(Context context) {
         super(context);
@@ -103,6 +104,7 @@ public class ComboView extends RelativeLayout {
         @Override
         public void onClick(View v) {
             if (!isDrawProgress) {
+                comboClickListener.onNormalClick();
                 morphToCircle(duration, new MorphingAnimation.Listener() {
                     @Override
                     public void onAnimationEnd() {
@@ -114,6 +116,7 @@ public class ComboView extends RelativeLayout {
                     }
                 });
             } else {//绘制progress的过程中,点击就重绘
+                comboClickListener.onComboClick();
                 startRipple();
                 setCurrentProgress(-90);
                 drawProgress();
@@ -156,7 +159,7 @@ public class ComboView extends RelativeLayout {
 //        setPadding(padding, padding, padding, padding);
         if (progressAnimator == null) {
             progressAnimator = ObjectAnimator.ofFloat(this, "currentProgress", 0, 360);
-            progressAnimator.setDuration(1000);
+            progressAnimator.setDuration(5000);
             progressAnimator.setInterpolator(new AccelerateDecelerateInterpolator());
         }
         progressAnimator.addListener(new AnimatorListenerAdapter() {
@@ -196,6 +199,7 @@ public class ComboView extends RelativeLayout {
         this.toStrokeWidth = params.toStrokeWidth;
         this.fromStrokeColor = params.fromStrokeColor;
         this.toStrokeColor = params.toStrokeColor;
+        this.comboClickListener = params.comboClickListener;
         morphToSquare(0);//初始化的时候duration=0
         morphingButton.setTextSize(textSize);
         morphingButton.setTextColor(textColor);
@@ -243,7 +247,7 @@ public class ComboView extends RelativeLayout {
             ObjectAnimator scaleYAnimator = ObjectAnimator.ofFloat(rippleView, "scaleY", 1.0f, 4.0f);
             ObjectAnimator alphaAnimator = ObjectAnimator.ofFloat(rippleView, "alpha", 1, 0);
 
-            animatorSet.setDuration(500);
+            animatorSet.setDuration(300);
             animatorSet.setInterpolator(new AccelerateDecelerateInterpolator());
 
             animatorSet.playTogether(scaleXAnimator, scaleYAnimator, alphaAnimator);
@@ -299,6 +303,7 @@ public class ComboView extends RelativeLayout {
         private int toStrokeWidth = 1;
         private int fromStrokeColor = fromColor;
         private int toStrokeColor = toColor;
+        private ComboClickListener comboClickListener;
 
         private Params() {
 
@@ -382,5 +387,17 @@ public class ComboView extends RelativeLayout {
             return this;
         }
 
+        public Params comboClickListener(ComboClickListener comboClickListener){
+            this.comboClickListener = comboClickListener;
+            return this;
+        }
+
+    }
+
+    public interface ComboClickListener{
+
+        void onComboClick();
+
+        void onNormalClick();
     }
 }
