@@ -1,7 +1,7 @@
 [![Android Arsenal](https://img.shields.io/badge/Android%20Arsenal-ComboView-green.svg?style=true)](https://android-arsenal.com/details/1/3338)
 
 # ComboView
-###A view of clicking effect by combo action
+### A view of clicking effect by combo action
 
 
 # UI Effect
@@ -13,7 +13,7 @@
 ![combo2](./combo2.gif)
 
 
-#How To Use
+# How To Use
 ```java
 
   ComboView.Params params = ComboView.Params.create()
